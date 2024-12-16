@@ -1,13 +1,10 @@
 from importaciones import *
 
 
-
 while True:
     print(menuPrincipal)
-
     print(menu1)
     opcion = int(input('Escoge una opcion :'))
-
     match opcion:
         case 1:
             campers()

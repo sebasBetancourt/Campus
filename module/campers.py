@@ -99,7 +99,6 @@ def campers():
         opcion = getInt(':)')
         if opcion == 1:
             addCandidato()
-            pressEnter()
         elif opcion == 2:
             loginCamper()
             pressEnter()

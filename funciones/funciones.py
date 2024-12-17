@@ -45,8 +45,16 @@ def pressEnter ():
 
 
 
-
-
-
-
-
+def intDosDigitos(mensaje):
+    while True:
+        numero = getInt(mensaje)
+        cad =str(numero)
+        if len(cad)== 2: 
+            return cad
+        elif len(cad)== 2 and cad[0] == '0': 
+            return cad
+        elif len(cad)== 4:
+            cad = int(cad)
+            if (cad >= 1900) and (cad <= 2006):
+                return str(cad)
+        else : print("El  numero tiene que tener 2 o 4 digitos")

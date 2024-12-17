@@ -5,31 +5,27 @@ from funciones.funciones import *
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 #CASE 2_Agregar Trainer
 def agregarTrainer(baseDatos):
-    print('--------------------------Registrar camper---------------------------')
-    nombre = input('Escribe tu nombre completo :')
-    cedula = getInt('Escribe tu cedula :')
-    print('Escribe tu fecha de nacimiento :')
-    dia = getInt('Dia: ')
+    print('--------------------------Registrar Trainer---------------------------')
+    nombre = input('Escribe nombre completo del trainer:')
+    cedula = intDiezDigitos('Escribe cedula del trainer :')
+    for i in range(len(baseDatos["trainer"])):
+        if baseDatos["trainer"][i]["cedula"] == cedula:
+            print (baseDatos["trainer"][i]["cedula"],"ya se encuentra registrado :)")
+            pressEnter()
+            return baseDatos
+    print('Escribe fecha de nacimiento del trainer :')
+    dia = intDosDigitos('Dia: ')
     mes = getInt('Mes: ')
-    año = getInt('Año: ')
+    año = intDosDigitos('Año: ')
     fechaNacimiento = (f'{dia}/{mes}/{año}')
-    skills = input('Ingresa tus habilidades aqui: \n')
-    hDisponibles = print('Escoge una opcion: \n1. 6am a 2pm\n2. 2pm a 10pm')
-    hDisponibles = getInt('Elige una opcion: ')
-    if hDisponibles == 1:
-        hDisponibles = '6am-2pm'
-    elif hDisponibles == 2:
-        hDisponibles = '2pm-10pm'
-    salon = 0
+    skills = input('Ingresa las skills del trainer: \n')
     
 
     newTrainer = {
         'nombre':nombre,
         'cedula':cedula,
         'fechaNacimiento':fechaNacimiento,
-        'skills':skills,
-        'hDisponible':hDisponibles,
-        'salon': salon
+        'skills':skills
     }
     baseDatos['trainer'].append(newTrainer)
     return baseDatos
@@ -37,6 +33,59 @@ def addTrainer():
     baseDatos = abrirArchivo(RUTA_BASE_DATOS)
     baseDatos = agregarTrainer(baseDatos)
     guardarArchivo(RUTA_BASE_DATOS,baseDatos)
+
+def viewTrainers():
+    datos = abrirArchivo(RUTA_BASE_DATOS)
+    contT = 0
+    for i in datos["trainer"]:
+        contT += 1
+        print("")
+        print(f"{contT}. {i['nombre']} - cedula: {i['cedula']}")
+        print(f"Fecha de Nacimiento: {i['fechaNacimiento']} - Skills: {i["skills"]}")
+
+def viewStudentReport():
+    datos = abrirArchivo(RUTA_BASE_DATOS)
+    count = 0
+    for camper in datos['camper']:
+        if camper['estado']['Cursando'] == True:
+            if camper['riesgo'] == True:
+                count += 1
+                print("")
+                print(f"{count}. {camper['nombre']} - cedula: {camper['cedula']}")
+                pressEnter()
+            else:
+                print("")
+                print('No existen campers reportados al momento.')
+                pressEnter()
+                break
+
+def viewRendCamper():
+    datos = abrirArchivo(RUTA_BASE_DATOS)
+    camperEncontrado = False
+    cedula = getInt('Ingrese la cedula del Camper: ')
+    
+    for camper in datos["camper"]:
+        if camper["cedula"] == str(cedula):
+            camperEncontrado = True
+            if camper['riesgo'] == True:
+                print("")
+                print("El camper se encuentra en Bajo Rendimiento.")
+                print(f"Modulo1 = {camper['notas']['modulo1']}")
+                print(f"Modulo2 = {camper['notas']['modulo2']}")
+                print(f"Modulo3 = {camper['notas']['modulo3']}")
+                print(f"Modulo4 = {camper['notas']['modulo4']}")
+                print(f"Modulo5 = {camper['notas']['modulo5']}")
+                pressEnter()
+            else:
+                print('El camper tiene sus notas bien.')
+                pressEnter()
+            break 
+
+    if not camperEncontrado:
+        print('Cédula incorrecta.')
+        pressEnter()
+
+    
 
 
 #----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -137,7 +186,7 @@ def verGrupos():
 
 def createGrupo(baseDatos):
     grupo = {}
-    print("Ingresa el nombre: ")
+    print("..Ingresa el nombre")
     grupo["nombre"] = getDosDigitos()
     contT = 0
     salir = False
@@ -290,13 +339,9 @@ def administrarTrainers ():
         print(menuCoordinadorTrainer)
         opc1 = getInt('Ingrese una opción: ')
         match opc1:
-            case 1: print("addTrainer()")
-            case 2: print("viewTrainers()")
-            case 3: print("asigneRuta()")
-            case 4: print("asigneSalon()")
-            case 5: print("asigneEstudiantes()")
-            case 6: print("asigneHorario()")
-            case 7: 
+            case 1: addTrainer()
+            case 2: viewTrainers()
+            case 3: 
                 pressEnter()
                 return
             case _: print("opcion invalida")
@@ -304,16 +349,12 @@ def administrarTrainers ():
 
 def reportes ():
     while True:
-        print(menuCoordinadorTrainer)
+        print(menuCoordinadorReportes)
         opc1 = getInt('Ingrese una opción: ')
         match opc1:
-            case 1: print("addTrainer()")
-            case 2: print("viewTrainers()")
-            case 3: print("asigneRuta()")
-            case 4: print("asigneSalon()")
-            case 5: print("asigneEstudiantes()")
-            case 6: print("asigneHorario()")
-            case 7: 
+            case 1: viewStudentReport()
+            case 2: viewRendCamper()
+            case 3: 
                 pressEnter()
                 return
             case _: print("opcion invalida")

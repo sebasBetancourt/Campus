@@ -103,11 +103,7 @@ menuCandidatosCoordinador = """
 menuCoordinadorTrainer = """
 1. Agregar trainer
 2. Ver trainers
-3. Asignar ruta
-4. Asignar salon
-5. Asignar estudiantes
-6. Asignar Horario
-7. Menu anterior
+3. Menu anterior
 """
 
 menuAdministrarGrupos = """
@@ -117,12 +113,9 @@ menuAdministrarGrupos = """
 4. Menu anterior
 """
 
-menuCoordinadorCampus = """
-1. Ver salones disponibles
-2. Ver traainers
-3. Ver estudiantes
-4. Ver candidatos
-5. Ver Rutas
-6. Ver rendimiento de campers
-7. Menu anterior
+menuCoordinadorReportes = """
+1. Ver estudiantes reportados
+2. Ver rendimiento de campers
+3. Menu anterior
 """
+

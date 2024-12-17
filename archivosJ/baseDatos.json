@@ -11,8 +11,35 @@
             "estado": {
                 "En proceso": false,
                 "Inscrito": false,
-                "Aprobado": true,
+                "Aprobado": false,
                 "Denegado": false,
+                "Cursando": true,
+                "Graduado": false,
+                "Expulsado": false,
+                "Retirado": false
+            },
+            "notas": {
+                "modulo1": 100.0,
+                "modulo2": 0.0,
+                "modulo3": 0.0,
+                "modulo4": 0.0,
+                "modulo5": 0.0
+            },
+            "riesgo": true,
+            "grupo": "M1"
+        },
+        {
+            "cedula": "1231231231",
+            "nombre": "12",
+            "apellido": "12",
+            "direccion": "12",
+            "acudiente": "12",
+            "telefono": "1231231231",
+            "telefonoFijo": "1231231231",
+            "estado": {
+                "En proceso": true,
+                "Inscrito": false,
+                "Aprobado": false,
                 "Cursando": false,
                 "Graduado": false,
                 "Expulsado": false,
@@ -29,13 +56,13 @@
             "grupo": "0"
         },
         {
-            "cedula": "1231231231",
-            "nombre": "12",
-            "apellido": "12",
-            "direccion": "12",
-            "acudiente": "12",
-            "telefono": "1231231231",
-            "telefonoFijo": "1231231231",
+            "cedula": "9876543210",
+            "nombre": "Vsdvsd",
+            "apellido": "Sbdsv",
+            "direccion": "Vsd",
+            "acudiente": "Vsd",
+            "telefono": "1234567891",
+            "telefonoFijo": "1234567891",
             "estado": {
                 "En proceso": true,
                 "Inscrito": false,
@@ -68,6 +95,24 @@
             "cedula": "123456",
             "fechaNacimiento": "21/6/2007",
             "skills": "Soy Programador de tiempo completo, estudio y duermo"
+        },
+        {
+            "nombre": "Pepe",
+            "cedula": 321,
+            "fechaNacimiento": "43224533/43232525234/455234",
+            "skills": "bdshsbkvdsl"
+        },
+        {
+            "nombre": "fdsfsd",
+            "cedula": "1234567895",
+            "fechaNacimiento": "32/45/97",
+            "skills": "gfgfbbfg"
+        },
+        {
+            "nombre": "fs",
+            "cedula": "9876543218",
+            "fechaNacimiento": "21/67/1997",
+            "skills": "vsd"
         }
     ],
     "coordinador": [

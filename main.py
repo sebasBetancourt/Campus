@@ -1,24 +1,18 @@
 from importaciones import *
 
 
+
 while True:
     print(menuPrincipal)
+
     print(menu1)
-    opcion = int(input('Escoge una opcion :'))
+    opcion = getInt('Escoge una opcion :')
+
     match opcion:
         case 1:
             campers()
         case 2:
-            
-            pass
-
-            match opcion:
-                case 1:
-                    addTrainer(baseDatos)
-                    abrirArchivo('baseDatos')
-                    guardarArchivo('baseDatos',baseDatos)
-                    print('Hecho')
-                    input('Press enter...........')
+            Trainer()
         case 3:
            coordinacion()
         case 4:

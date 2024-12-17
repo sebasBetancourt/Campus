@@ -19,73 +19,22 @@
                 "Retirado": false
             },
             "riesgo": false,
-            "horario": {
-                "6am-10am": false,
-                "10am-2pm": false,
-                "2pm-6pm": false,
-                "6pm-10pm": false
-            },
-            "ruta": {
-                "NodeJs": false,
-                "Java": false,
-                "NetCore": false
-            },
-            "Trainer": "",
+            "grupo" : "0",
             "notas": {
-                "modulo1": false,
-                "modulo2": false,
-                "modulo3": false,
-                "modulo4": false,
-                "modulo5": false
-            },
-            "salon": 0
-        },
-        {
-            "cedula": 312,
-            "nombre": "Axs",
-            "apellido": "Cas",
-            "direccion": "Cas",
-            "acudiente": "Ca",
-            "telefono": 321,
-            "telefonoFijo": 231,
-            "estado": {
-                "En proceso": true,
-                "Inscrito": false,
-                "Aprobado": false,
-                "Cursando": false,
-                "Graduado": false,
-                "Expulsado": false,
-                "Retirado": false
-            },
-            "riesgo": false
-        },
-        {
-            "cedula": 1233,
-            "nombre": "Carls",
-            "apellido": "Jsdafdhf",
-            "direccion": "Dfhdfjdf",
-            "acudiente": "Dfhdfjdkf",
-            "telefono": 342555,
-            "telefonoFijo": 123456,
-            "estado": {
-                "En proceso": true,
-                "Inscrito": false,
-                "Aprobado": false,
-                "Cursando": false,
-                "Graduado": false,
-                "Expulsado": false,
-                "Retirado": false
-            },
-            "riesgo": false
+                "modulo1": 0,
+                "modulo2": 0,
+                "modulo3": 0,
+                "modulo4": 0,
+                "modulo5": 0
+            }
         }
     ],
     "trainer": [
         {
             "nombre": "Johiver Hija",
-            "cedula": 3423,
+            "cedula": "1234",
             "fechaNacimiento": "21/6/2007",
-            "skills": "Soy Programador de tiempo completo, estudio y duermo",
-            "hDisponible": 2
+            "skills": "Soy Programador de tiempo completo, estudio y duermo"
         }
     ],
     "coordinador": [
@@ -93,12 +42,34 @@
             "identificador": 12343,
             "nombre": "Karen",
             "usuario": "karenload",
-            "contrase\u00f1a": 1234
+            "contrase\u00f1a": "1234"
         }
     ],
-    "salones": [
-        {},
-        {},
-        {}
+    "salones": {
+        "1": "Arthemis",
+        "2": "Apolo",
+        "3": "Sputnik"
+    },
+    "rutas": {
+        "1": "NodeJS",
+        "2": "Java",
+        "3": "NetCore"
+    },
+    "jornadas": {
+        "1": "6am - 10am",
+        "2": "10am - 2pm",
+        "3": "2pm - 6pm",
+        "4": "6pm - 10pm"
+
+    },
+    "grupos": [
+        {
+            "nombre": "M1",
+            "trainer": "1234",
+            "jornada": "2",
+            "ruta": "1",
+            "salon": "1",
+            "cantidad": 0
+        }
     ]
 }

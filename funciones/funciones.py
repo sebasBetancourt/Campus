@@ -14,17 +14,35 @@ def getInt(mensaje):
         except Exception:
             print('Opcion Invalida, ingrese un valor valido.')
 #case1_registrarse
+
+def intDiezDigitos(mensaje):
+    while True:
+        documento = getInt(mensaje)
+        cad =str(documento)
+        if len(cad)== 10: 
+            return cad
+        else : print("El  numero tiene que tener 10 digitos")
+
+def pressEnter ():
+    print ("Chaito...")
+    input('Press Enter...........................')
+
+
 def newcandidate(baseDatos):
     print('Registrate-----')
-    cedula = getInt('Escribe tu cedula :')
+    cedula = intDiezDigitos("Ingrese su cedula: ")
+    for i in range(len(baseDatos["camper"])):
+        if baseDatos["camper"][i]["cedula"] == cedula:
+            print (baseDatos["camper"][i]["cedula"],"ya se encuentra registrado :)")
+            pressEnter()
+            return baseDatos
     nombre = input('Escribe tu nombre :').capitalize()
     apellido = input('Escribe tus apellidos :').capitalize()
     direccion = input('Ingresa tu direccion :').capitalize()
     acudiente = input('Ingresa un acudiente :').capitalize()
-    telefono = getInt('Ingrese su numero telefonico :')
-    telefonoFijo = getInt('Ingrese su telefono Fijo :')
+    telefono = intDiezDigitos("Ingrese su telefono: ")
+    telefonoFijo = intDiezDigitos("Ingrese su numero de telefono fijo: ")
         
-
     estado = {"En proceso": True,
                 "Inscrito": False,
                 "Aprobado": False,
@@ -34,6 +52,13 @@ def newcandidate(baseDatos):
                 "Retirado": False
                 }
     riesgo = False
+    notas = {
+        "modulo1": 0,
+        "modulo2": 0,
+        "modulo3": 0,
+        "modulo4": 0,
+        "modulo5": 0
+    }
 
     newCandidato = {
         'cedula':cedula,
@@ -44,8 +69,14 @@ def newcandidate(baseDatos):
         'telefono':telefono,
         'telefonoFijo':telefonoFijo,
         'estado':estado,
-        'riesgo': riesgo
+        'riesgo': riesgo,
+        'horario': horario,
+        'ruta': ruta,
+        'Trainer': Trainer,
+        'notas': notas,
+        'salon': salon
     }
+
     baseDatos['camper'].append(newCandidato)
     return baseDatos
 def addCandidato():
@@ -53,7 +84,7 @@ def addCandidato():
     baseDatos = newcandidate(baseDatos)
     guardarArchivo(RUTA_BASE_DATOS,baseDatos)
 #case 2_Ingresar......................................................
-def ingresarCamper(ingresar):
+def ingresarCamper(ingresar, baseDatos):
     encontrado = False 
     for camper in baseDatos['camper']:
         if ingresar == str(camper['cedula']):
@@ -64,18 +95,17 @@ def ingresarCamper(ingresar):
             if camper['estado']['En proceso'] == True:
                 print("Estás en proceso de ingreso, espera que te llamen para el examen.")
                 input('Press Enter para volver al menu anterior...............')
-                break  
-
+                return baseDatos
 
             if camper['estado']['Inscrito'] == True:
-                
-                pass
+                print('Estas Inscrito, espera los resultados.')
+                input('Press Enter...........................')
             if camper['estado']['Aprobado'] == True:
-                
-                pass
+                print('Ya estas ¡¡¡Aprobado!!!, espera que te asignen cuando puedes iniciar.')
+                input('Press Enter..........................................')
             if camper['estado']['Cursando'] == True:
-                
                 pass
+                
             if camper['estado']['Graduado'] == True:
                 
                 pass
@@ -89,96 +119,17 @@ def ingresarCamper(ingresar):
     if not encontrado:
         print('Usted no se encuentra REGISTRADO, vaya al menu anterior para registrarse.')
         input('Press Enter para acceder al menu anterior')
+    return baseDatos
 
 
 def loginCamper():
     ingresar = input('Escriba su cedula para ingresar :')
-    ingresarCamper(ingresar)          
-
-
-
-
-
-#-----------------------------------------------------------------------------------------------------------------------------------------------------------------
-#CASE 2_Agregar Trainer
-def addTrainer(baseDatos):
-    print('--------------------------Registrate---------------------------')
-    nombre = input('Escribe tu nombre completo :')
-    cedula = int(input('Escribe tu cedula :'))
-    print('Escribe tu fecha de nacimiento :')
-    dia = int(input('Dia: '))
-    mes = int(input('Mes: '))
-    año = int(input('Año: '))
-    fechaNacimiento = (f'{dia}/{mes}/{año}')
-    skills = input('Ingresa tus habilidades aqui: \n')
-    hDisponibles = print('Escoge una opcion: \n1. 6am a 2pm\n2. 2pm a 10pm')
-    hDisponibles = int(input('Elige una opcion: '))
-    if hDisponibles == 1:
-        hDisponibles = '6am-2pm'
-    elif hDisponibles == 2:
-        hDisponibles = '2pm-10pm'
-    salon = 0
-    
-
-    newTrainer = {
-        'nombre':nombre,
-        'cedula':cedula,
-        'fechaNacimiento':fechaNacimiento,
-        'skills':skills,
-        'hDisponible':hDisponibles
-
-    }
-    baseDatos['trainer'].append([newTrainer])
-    return newTrainer
-
-
-#----------------------------------------------------------------------------------------------------------------------------------------------------------
-#CASE 3_Coordinacion
-def changeCandidato():
     baseDatos = abrirArchivo(RUTA_BASE_DATOS)
-    baseDatos = cambiarCandidato(baseDatos)
-    guardarArchivo(RUTA_BASE_DATOS, baseDatos)
-def cambiarCandidato(baseDatos):
-    opcion = getInt('Ingrese una opción: ')
-    
-    match opcion:
-        case 1:
-            pass  # Aquí puedes agregar lógica para la opción 1 si lo necesitas
-        case 2:
-            print(menuCandidatosCoordinador)
-            opcion = getInt('Ingrese una opción: ')
-            match opcion:
-                case 1:
-                    ingresar = input('Ingrese cédula del candidato: ')
-                    encontrado = False
-                    for camper in baseDatos['camper']:
-                        if ingresar == str(camper['cedula']):
-                            camper['estado']['En proceso'] = False
-                            camper['estado']['Inscrito'] = True
-                            print("El Camper ha sido inscrito para el examen.")
-                            encontrado = True
-                            break
-                    if not encontrado:
-                        print("Cédula no encontrada.")
-                case 2:
-                    ingresar = input('Ingrese cédula del candidato: ')
-                    encontrado = False
-                    for camper in baseDatos['camper']:
-                        if ingresar == str(camper['cedula']):
-                            notaPractica = getInt('Ingrese la nota de la práctica: ')
-                            notaTeorica = getInt('Ingrese la nota teórica: ')
-                            totalNota = (notaPractica + notaTeorica) / 2
-                            if totalNota >= 60:
-                                camper['estado']['Inscrito'] = False
-                                camper['estado']['Aprobado'] = True
-                                print("El Camper ha sido aprobado con éxito.")
-                            else:
-                                camper['estado']['Inscrito'] = False
-                                camper['estado']['Denegado'] = True
-                                print("El Camper no alcanzó la puntuación de aprobación.")
-                            encontrado = True
-                            break
-                    if not encontrado:
-                        print("Cédula no encontrada.")
-    return baseDatos
+    baseDatos =  ingresarCamper(ingresar, baseDatos)
+
+
+
+
+
+
 

@@ -45,9 +45,10 @@ mensajeEnProceso = """
 menuTrainer = """
 Escoge una opcion:
 
-1. Registrarse Trainer
-2. Ingresar Trainer
-3. Menu Anterior
+1. Calificar
+2. Ver info
+3. Ver Estudiantes
+4. Menu Anterior
 """
 #-----------------------------------
 
@@ -56,25 +57,24 @@ Escoge una opcion:
 menuCoordinador = """"
 Ingresa una opcion:
 
-1. Campers
-2. Trainer
-3. Campus
+1. Administrar Campers
+2. Administrar Trainers
+3. Reportes
 4. Menu Anterior
 
 """
 #--------------------------------------------------------------------------------
 #3.1 Coordinador-Campers
 menuCamperCoordinador = """
-1. Camper
+1. Campers
 2. Candidatos
 3. Menu Anterior
 """
 #3.1.1 Coordinador-Campers-Campers
 menuCampersCoordinador = """
-1. Campers Bajo Rendimiento
-2. Rutas
-3. Grupo asignado
-4. Menu Anterior
+1. Ver info de rutas
+2. Grupo asignado
+3. Menu Anterior
 """
 #3.1.1.2 Coordinador-Campers-Campers-Rutas
 menuCoordinadorRutas = """
@@ -100,5 +100,21 @@ menuCandidatosCoordinador = """
 
 #3.2 Coordinador-Trainer
 menuCoordinadorTrainer = """
-1. 
+1. Agregar trainer
+2. Ver trainers
+3. Asignar ruta
+4. Asignar salon
+5. Asignar estudiantes
+6. Asignar Horario
+7. Menu anterior
+"""
+
+menuCoordinadorCampus = """
+1. Ver salones disponibles
+2. Ver traainers
+3. Ver estudiantes
+4. Ver candidatos
+5. Ver Rutas
+6. Ver rendimiento de campers
+7. Menu anterior
 """

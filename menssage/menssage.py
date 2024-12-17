@@ -60,7 +60,8 @@ Ingresa una opcion:
 1. Administrar Campers
 2. Administrar Trainers
 3. Reportes
-4. Menu Anterior
+4. Administrar Grupos
+5. Menu Anterior
 
 """
 #--------------------------------------------------------------------------------
@@ -107,6 +108,13 @@ menuCoordinadorTrainer = """
 5. Asignar estudiantes
 6. Asignar Horario
 7. Menu anterior
+"""
+
+menuAdministrarGrupos = """
+1. Ver Grupos disponibles
+2. Agregar Grupo
+3. Editar Grupo
+4. Menu anterior
 """
 
 menuCoordinadorCampus = """

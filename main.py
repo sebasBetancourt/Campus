@@ -14,7 +14,7 @@ while True:
         case 2:
             Trainer()
         case 3:
-           coordinacion()
+            coordinacion()
         case 4:
             print('Has cerrado tu sesion. Bye')
             input('Presiona cualquier tecla............')

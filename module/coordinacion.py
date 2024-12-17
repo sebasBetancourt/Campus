@@ -4,7 +4,7 @@ from funciones.funciones import *
 
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 #CASE 2_Agregar Trainer
-def addTrainer(baseDatos):
+def agregarTrainer(baseDatos):
     print('--------------------------Registrar camper---------------------------')
     nombre = input('Escribe tu nombre completo :')
     cedula = int(input('Escribe tu cedula :'))
@@ -33,9 +33,9 @@ def addTrainer(baseDatos):
     }
     baseDatos['trainer'].append([newTrainer])
     return baseDatos
-def agregarTrainer():
+def addTrainer():
     baseDatos = abrirArchivo(RUTA_BASE_DATOS)
-    baseDatos = addTrainer(baseDatos)
+    baseDatos = agregarTrainer(baseDatos)
     guardarArchivo(RUTA_BASE_DATOS,baseDatos)
 
 
@@ -118,8 +118,35 @@ def verInfoDeRutas():
             pressEnter()
             return
         
+def verGrupos():
+    datos = abrirArchivo(RUTA_BASE_DATOS)
+    for i in datos["grupos"]:
+        print("")
+        for j in datos["trainer"]:
+            if j["cedula"] == i["trainer"]:
+                nombre =  j["nombre"]
+        jornada = datos["jornadas"].get(i["jornada"])
+        ruta = datos["rutas"].get(i["ruta"])
+        salon = datos["salones"].get(i["salon"])
+        
+        print(f"Grupo: {i["nombre"]} - Trainer: {nombre} - Jornada: {jornada}")
+        print(f"Ruta: {ruta} - Salon: {salon} - Cantidad: {i["cantidad"]}")
+    pressEnter()
+    return
 
 
+def administrarGrupos():
+    while True:
+        print (menuAdministrarGrupos)
+        opcion = getInt("Ingrese la opcion: ")
+        match opcion:
+            case 1: verGrupos()
+            case 2: print("Crear grupo")
+            case 3: print("Editar")
+            case 4: 
+                pressEnter()
+                return
+            case _: print("Opcion no valida")
 def administrarCampers ():
     while True:
         print(menuCamperCoordinador)
@@ -136,8 +163,8 @@ def administrarCampers ():
                         break
                     case _:
                         print("Opcion no valida")
-            case 2: changeCandidato()  # Llamamos solo a changeCandidato aquí
-            case 3: 
+            case 2: changeCandidato() 
+            case 3:
                 pressEnter()
                 return 
             case _: print("opcion invalida")
@@ -180,9 +207,10 @@ def coordinacion():
         opcion = getInt('Ingrese una opción: ')
         match opcion:
             case 1: administrarCampers()
-            case 2: administrarCampers()
+            case 2: administrarTrainers()
             case 3: reportes()
-            case 4:
+            case 4: administrarGrupos()
+            case 5:
                 print('Has cerrado tu sesión. ¡Adiós!')
                 input('Presiona cualquier tecla para salir...')
                 break

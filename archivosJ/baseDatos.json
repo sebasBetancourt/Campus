@@ -18,15 +18,42 @@
                 "Expulsado": false,
                 "Retirado": false
             },
-            "riesgo": false,
-            "grupo" : "0",
             "notas": {
                 "modulo1": 0,
                 "modulo2": 0,
                 "modulo3": 0,
                 "modulo4": 0,
                 "modulo5": 0
-            }
+            },
+            "riesgo": false,
+            "grupo": "0"
+        },
+        {
+            "cedula": "1231231231",
+            "nombre": "12",
+            "apellido": "12",
+            "direccion": "12",
+            "acudiente": "12",
+            "telefono": "1231231231",
+            "telefonoFijo": "1231231231",
+            "estado": {
+                "En proceso": true,
+                "Inscrito": false,
+                "Aprobado": false,
+                "Cursando": false,
+                "Graduado": false,
+                "Expulsado": false,
+                "Retirado": false
+            },
+            "notas": {
+                "modulo1": 0,
+                "modulo2": 0,
+                "modulo3": 0,
+                "modulo4": 0,
+                "modulo5": 0
+            },
+            "riesgo": false,
+            "grupo": "0"
         }
     ],
     "trainer": [
@@ -60,11 +87,26 @@
         "2": "10am - 2pm",
         "3": "2pm - 6pm",
         "4": "6pm - 10pm"
-
     },
     "grupos": [
         {
             "nombre": "M1",
+            "trainer": "1234",
+            "jornada": "2",
+            "ruta": "1",
+            "salon": "1",
+            "cantidad": 0
+        },
+        {
+            "nombre": "J2",
+            "trainer": "1234",
+            "jornada": "1",
+            "ruta": "2",
+            "salon": "1",
+            "cantidad": 0
+        },
+        {
+            "nombre": "U2",
             "trainer": "1234",
             "jornada": "2",
             "ruta": "1",

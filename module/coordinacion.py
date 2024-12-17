@@ -7,15 +7,15 @@ from funciones.funciones import *
 def agregarTrainer(baseDatos):
     print('--------------------------Registrar camper---------------------------')
     nombre = input('Escribe tu nombre completo :')
-    cedula = int(input('Escribe tu cedula :'))
+    cedula = getInt('Escribe tu cedula :')
     print('Escribe tu fecha de nacimiento :')
-    dia = int(input('Dia: '))
-    mes = int(input('Mes: '))
-    año = int(input('Año: '))
+    dia = getInt('Dia: ')
+    mes = getInt('Mes: ')
+    año = getInt('Año: ')
     fechaNacimiento = (f'{dia}/{mes}/{año}')
     skills = input('Ingresa tus habilidades aqui: \n')
     hDisponibles = print('Escoge una opcion: \n1. 6am a 2pm\n2. 2pm a 10pm')
-    hDisponibles = int(input('Elige una opcion: '))
+    hDisponibles = getInt('Elige una opcion: ')
     if hDisponibles == 1:
         hDisponibles = '6am-2pm'
     elif hDisponibles == 2:
@@ -31,7 +31,7 @@ def agregarTrainer(baseDatos):
         'hDisponible':hDisponibles,
         'salon': salon
     }
-    baseDatos['trainer'].append([newTrainer])
+    baseDatos['trainer'].append(newTrainer)
     return baseDatos
 def addTrainer():
     baseDatos = abrirArchivo(RUTA_BASE_DATOS)
@@ -135,14 +135,130 @@ def verGrupos():
     return
 
 
+def createGrupo(baseDatos):
+    grupo = {}
+    print("Ingresa el nombre: ")
+    grupo["nombre"] = getDosDigitos()
+    contT = 0
+    salir = False
+    while not salir:
+        contT = 0
+        for i in baseDatos["trainer"]:
+            contT += 1
+            print(f"{contT}. {i['nombre']} - cedula: {i['cedula']}")
+        trainer = input("Ingresa la cedula del trainer: ")
+        contT = 0
+        for j in baseDatos["trainer"]:
+            if j["cedula"] == trainer:
+                grupo["trainer"] = j["cedula"]
+                salir = True
+        if not salir:
+            print("Cedula de trainer invalida, ingresa un trainer existente")
+    # --------------------------------------------------------------------
+    salir = False
+    while not salir: 
+        contJ = 0
+        for m in baseDatos["jornadas"].values():
+            contJ += 1
+            print(f"{contJ}. {m}")
+        jor = getInt("Ingresa la jornada: ")
+        jor = str(jor)  
+        if jor in baseDatos["jornadas"]:
+            grupo["jornada"] = jor
+            salir = True 
+        else:
+            print("Valor no válido. Intenta nuevamente.")
+        # -------------------------------------------------------------------
+    salir = False
+    while not salir:
+        contJ = 0
+        for n in baseDatos["rutas"].values():
+            contJ += 1
+            print(f"{contJ}. {n}")
+        ru = str(getInt("Ingresa la ruta: "))
+        rut = baseDatos["rutas"].get(ru)
+        if rut is not None:
+            grupo["ruta"] = ru
+            salir = True
+        else:
+            print("Valor no válido")
+    # ------------------------------------------------------------------
+    salir = False
+    while not salir:
+        contJ = 0
+        for o in baseDatos["salones"].values():
+            contJ += 1
+            print(f"{contJ}. {o}")
+        sal = str(getInt("Ingresa el salon: "))
+        salo = baseDatos["salones"].get(sal)
+        if salo is not None:
+            grupo["salon"] = sal
+            salir = True
+        else:
+            print("Valor no válido")
+
+    # -----------------------------------
+    grupo["cantidad"] = 0
+    baseDatos['grupos'].append(grupo)
+    return baseDatos
+
+def crearGrupo():
+    baseDatos = abrirArchivo(RUTA_BASE_DATOS)
+    baseDatos = createGrupo(baseDatos)
+    guardarArchivo(RUTA_BASE_DATOS, baseDatos)
+
+def editGroup(baseDatos):
+    salirse = False
+    while not salirse:
+        verGrupos()
+        grupo = input("Ingresa el nombre del geupo a editar: ").upper()
+        for z in baseDatos["grupos"]:
+            if z["nombre"] == grupo:
+                contT = 0
+                salir = False
+
+                while not salir:
+                    contT = 0
+                    for i in baseDatos["trainer"]:
+                        contT += 1
+                        print(f"{contT}. {i['nombre']} - cedula: {i['cedula']}")
+                    trainer = input("Ingresa la cedula del trainer: ")
+                    contT = 0
+                    for j in baseDatos["trainer"]:
+                        if j["cedula"] == trainer:
+                            z["trainer"] = j["cedula"]
+                            salir = True
+                    if not salir:
+                        print("Cedula de trainer invalida, ingresa un trainer existente")
+                        # -------------------------------------------------------------------
+                salir = False
+                while not salir:
+                    contJ = 0
+                    for n in baseDatos["rutas"].values():
+                        contJ += 1
+                        print(f"{contJ}. {n}")
+                    ru = str(getInt("Ingresa la ruta: "))
+                    rut = baseDatos["rutas"].get(ru)
+                    if rut is not None:
+                        z["ruta"] = ru
+                        salir = True
+                        return baseDatos
+                    else:
+                        print("Valor no válido")
+def editarGrupo():
+    baseDatos = abrirArchivo(RUTA_BASE_DATOS)
+    baseDatos = editGroup(baseDatos)
+    guardarArchivo(RUTA_BASE_DATOS, baseDatos)
+
+
 def administrarGrupos():
     while True:
         print (menuAdministrarGrupos)
         opcion = getInt("Ingrese la opcion: ")
         match opcion:
             case 1: verGrupos()
-            case 2: print("Crear grupo")
-            case 3: print("Editar")
+            case 2: crearGrupo()
+            case 3: editarGrupo()
             case 4: 
                 pressEnter()
                 return

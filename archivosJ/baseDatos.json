@@ -62,6 +62,12 @@
             "cedula": "1234",
             "fechaNacimiento": "21/6/2007",
             "skills": "Soy Programador de tiempo completo, estudio y duermo"
+        },
+        {
+            "nombre": "Johiver",
+            "cedula": "123456",
+            "fechaNacimiento": "21/6/2007",
+            "skills": "Soy Programador de tiempo completo, estudio y duermo"
         }
     ],
     "coordinador": [
@@ -109,8 +115,16 @@
             "nombre": "U2",
             "trainer": "1234",
             "jornada": "2",
-            "ruta": "1",
+            "ruta": "3",
             "salon": "1",
+            "cantidad": 0
+        },
+        {
+            "nombre": "H5",
+            "trainer": "1234",
+            "jornada": "1",
+            "ruta": "2",
+            "salon": "2",
             "cantidad": 0
         }
     ]

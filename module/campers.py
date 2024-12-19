@@ -3,7 +3,8 @@ from menssage.menssage import *
 
 def newcandidate(baseDatos):
     print('---- Registrate ----')
-    cedula = intDiezDigitos("Ingrese su cedula: ")
+    cedula = getInt("Ingrese su cedula: ")
+    cedula = str(cedula)
     for i in range(len(baseDatos["camper"])):
         if baseDatos["camper"][i]["cedula"] == cedula:
             print (baseDatos["camper"][i]["cedula"],"ya se encuentra registrado :)")
@@ -13,8 +14,10 @@ def newcandidate(baseDatos):
     apellido = input('Escribe tus apellidos : ').capitalize()
     direccion = input('Ingresa tu direccion : ').capitalize()
     acudiente = input('Ingresa un acudiente : ').capitalize()
-    telefono = intDiezDigitos("Ingrese su telefono: ")
-    telefonoFijo = intDiezDigitos("Ingrese su numero de telefono fijo: ")
+    telefono = getInt("Ingrese su telefono: ")
+    telefonoFijo = getInt("Ingrese su numero de telefono fijo: ")
+    telefono = str(telefono)
+    telefonoFijo = str(telefonoFijo)
     estado = {"En proceso": True,
                 "Inscrito": False,
                 "Aprobado": False,
@@ -42,20 +45,64 @@ def newcandidate(baseDatos):
         'estado':estado,
         'notas': notas,
         'riesgo': riesgo,
-        'grupo' : "0",
+        'grupo' : "0"
     }
+    pressEnter()
     baseDatos['camper'].append(newCandidato)
     return baseDatos
 
 def addCandidato():
     baseDatos = abrirArchivo(RUTA_BASE_DATOS)
     baseDatos = newcandidate(baseDatos)
-    guardarArchivo(RUTA_BASE_DATOS,baseDatos)
-    
+    guardarArchivo(RUTA_BASE_DATOS, baseDatos)
+
+
+def loginDatosCamper(ingresar):
+    datos = abrirArchivo(RUTA_BASE_DATOS)
+    for camper in baseDatos['camper']:
+        if ingresar == camper['cedula']:
+            for student in camper['cedula']:
+                print(f'Hola {student["nombre"]} ')
+                print(f'Cedula: {student["cedula"]} ')
+                print(f'Direccion: {student["direccion"]} ')
+                print(f'Acudiente: {student["acudiente"]} ')
+                print(f'Telefono: {student["telefono"]} ')
+                print(f'Telefono Fijo: {student["telefonoFijo"]} ')
+                print(f"Estado: Cursando ")
+                countNotas = 0
+                for notas in student["notas"]:
+                    countNotas += 1
+                    print(f'Modulo {countNotas}: {notas[f"modulo{countNotas}"]}')
+                if student["riesgo"] == True:
+                    print(f'Riesgo: Alto')
+                elif student["riesgo"] == False:
+                    print(f'Riesgo: Alto')
+                print(f'Grupo: {student["grupo"]} ')
+
+
+   
 #case 2_Ingresar......................................................
+def retirarCamper():
+    datos = abrirArchivo(RUTA_BASE_DATOS)
+    encontrado = False
+    cedula = getStr1('Escribe cedula del camper :') 
+    
+    for i in datos["camper"]:
+        if cedula == i['cedula']:
+            if i['estado']['Cursando'] == True:
+                encontrado = True
+                i['estado']['Cursando'] = False
+                i['estado']['Retirado'] = True
+                guardarArchivo(RUTA_BASE_DATOS, datos)
+                print('Te has retiraste de CampusLands.')
+                pressEnter()
+                break
+    if not encontrado:
+        print('El usuario no existe.')
+        pressEnter()
 def ingresarCamper(baseDatos):
     encontrado = False 
-    ingresar = str(intDiezDigitos('Escriba su cedula para ingresar : '))
+    ingresar = str(getInt('Escriba su cedula para ingresar : '))
     for camper in baseDatos['camper']:
         if ingresar == camper['cedula']:
             encontrado = True
@@ -71,16 +118,15 @@ def ingresarCamper(baseDatos):
                 print('Ya estas ¡¡¡Aprobado!!!, espera que te asignen cuando puedes iniciar.')
                 input('Press Enter.......................................... ')
             elif camper['estado']['Cursando'] == True:
-                print('acceder a laas notas e informacion de lo m demas')
-                input('Press Enter.......................................... ')
+                loginCamper(ingresar)
             elif camper['estado']['Graduado'] == True:
-                print('Estas graduado vete a la mrd')
+                print('Estas graduado!!Bye')
                 input('Press Enter.......................................... ')
             elif camper['estado']['Expulsado'] == True:
-                print('Esta expulsado que te pasa, vete, chao')
-                input('Press Enter.......................................... ')
+                print('Esta expulsado de campus, intenta otra vez dentro de 5 años.')
+                pressEnter()
             elif camper['estado']['Retirado'] == True:
-                print('Chao con adios...')
+                print('Te retiraste de CampusLands, intenta registrarte otra vez dentro de 4 meses.')
                 input('Press Enter.......................................... ')
     if encontrado == False:
         print('Usted no se encuentra REGISTRADO, vaya al menu anterior para registrarse.')
@@ -103,6 +149,24 @@ def campers():
             loginCamper()
             pressEnter()
         elif opcion == 3:
+            datos = abrirArchivo(RUTA_BASE_DATOS)
+            encontrado = False
+            cedula = getStr1('Escribe cedula del camper :') 
+
+            for i in datos["camper"]:
+                if cedula == i['cedula']:
+                    if i['estado']['Cursando'] == True:
+                        encontrado = True
+                        i['estado']['Cursando'] = False
+                        i['estado']['Retirado'] = True
+                        guardarArchivo(RUTA_BASE_DATOS, datos)
+                        print('Te has retirado de CampusLands exitosamente.')
+                        pressEnter()
+                        break
+            if not encontrado:
+                print('El usuario no existe.')
+                pressEnter()
+        elif opcion == 4:
             pressEnter()
             break
         else:

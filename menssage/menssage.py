@@ -9,7 +9,7 @@ menuPrincipal = """
 
 
 menu1 = """
-Ingresar:
+Ingresa:
 
 1. Camper
 2. Trainer
@@ -21,29 +21,21 @@ Ingresar:
 
 #1 Camper
 menuEntrarCamper1 = """
-Escoge una opcion
 
 1. Registrarse
 2. Ingresar
-3. Menu Anterior
-"""
-#1.2 Camper-Ingresar
-menuIngresarCamper = """
-Escoge una opcion:
-
-
-
+3. Retirarse de CampusLands
+4. Menu Anterior
 """
 mensajeEnProceso = """
 *************************************************************
 *   Todavia no has presentado la prueba,                    *
-*    espera que te asignen una fecha para el examen.         *
+*    espera que te asignen una fecha para el examen.        *
 *************************************************************    
 """
 #--------------------------------------
 #2 Trainer
 menuTrainer = """
-Escoge una opcion:
 
 1. Calificar
 2. Ver info
@@ -55,13 +47,13 @@ Escoge una opcion:
 
 #3 Coordinador
 menuCoordinador = """"
-Ingresa una opcion:
 
 1. Administrar Campers
 2. Administrar Trainers
 3. Reportes
 4. Administrar Grupos
-5. Menu Anterior
+5. Rutas
+6. Menu Anterior
 
 """
 #--------------------------------------------------------------------------------
@@ -75,10 +67,20 @@ menuCamperCoordinador = """
 menuCampersCoordinador = """
 1. Ver info de rutas
 2. Grupo asignado
-3. Menu Anterior
+3. Expulsar Camper
+4. Graduar Camper
+5. Menu Anterior
 """
-#3.1.1.2 Coordinador-Campers-Campers-Rutas
+
+#Coordinador-Rutas
 menuCoordinadorRutas = """
+1. Ver rutas
+2. Agregar rutas
+3. Menu Anterior
+
+"""
+#3.1.1.2 Coordinador-Modulos-Rutas
+menuCoordinadorRutasModulos = """
 1. Modulo 1
 2. Modulo 2
 3. Modulo 3

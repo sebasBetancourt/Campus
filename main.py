@@ -10,11 +10,16 @@ while True:
 
     match opcion:
         case 1:
+            pressEnter()
             campers()
         case 2:
+            pressEnter()
             Trainer()
+
         case 3:
+            pressEnter()
             coordinacion()
+
         case 4:
             print('Has cerrado tu sesion. Bye')
             input('Presiona cualquier tecla............')

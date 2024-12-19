@@ -9,7 +9,8 @@ def guardarArchivo(archivo,diccionario):
     with open(f'./archivosJ/{archivo}.json',"w") as archivoAbrir:
         archivoAbrir.write(objetoJson)
 
-baseDatos = abrirArchivo('baseDatos')
 
 
 RUTA_BASE_DATOS = 'baseDatos' 
+
+baseDatos = abrirArchivo('baseDatos')

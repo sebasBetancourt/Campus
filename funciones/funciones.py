@@ -22,22 +22,18 @@ def getStr(mensaje):
         print("ingrese un caracter valido.")
         return getStr(mensaje)
 
-def intDiezDigitos(mensaje):
-    while True:
-        documento = getInt(mensaje)
-        cad =str(documento)
-        if len(cad)== 10: 
-            return cad
-        else : print("El  numero tiene que tener 10 digitos")
+def getStr1(mensaje):
+    return input(mensaje).strip() 
 
-def getDosDigitos():
+def getDosDigitos(mensaje):
     while True:
-        letra = str(getStr("Ingrese una letra: "))
+        letra = str(getStr(mensaje))
         num = str(getInt("Ingrese el numero: "))
-        if len(letra)== 1 and len(num) ==1:
+        if len(letra) == 1 and len(num) == 1:
             grupo = letra + num
             return grupo.upper()
-        else : print("El valor solo permite dos digitos ('M1')")
+        else:
+            print("El valor solo permite dos digitos ('M1')")
 
 def pressEnter ():
     print ("Hecho")

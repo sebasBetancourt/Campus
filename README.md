@@ -25,11 +25,11 @@ git clone https://github.com/sebasBetancourt/Campus.git
 
 Aqui podras ejecutar el programa en un editor (VS), con el acrhivo main.py:
 
-![Captura desde 2025-01-09 18-36-33](/home/camper/Imágenes/Capturas de pantalla/Captura desde 2025-01-09 18-36-33.png)
+<a href="https://ibb.co/Tgbgzm6"><img src="https://i.ibb.co/KrLrCFd/Captura-desde-2025-01-09-18-58-16.png" alt="Captura-desde-2025-01-09-18-58-16" border="0" /></a>
 
 Este es el resultado:
 
-![Captura desde 2025-01-09 18-37-39](/home/camper/Imágenes/Capturas de pantalla/Captura desde 2025-01-09 18-37-39.png)
+<a href="https://ibb.co/nzybrY8"><img src="https://i.ibb.co/0hLcq6V/Captura-desde-2025-01-09-18-59-19.png" alt="Captura-desde-2025-01-09-18-59-19" border="0" /></a>
 
 ### Descripcion
 
@@ -41,7 +41,7 @@ Este programa se utiliza a base de CRUDS, y como alamcenamiento de datos en un a
 
 Se ingresa una opcion, segun lo que se tenga el usuario, como puede ser Candidato, Camper, Trainer o Coordinador:
 
-![Captura desde 2025-01-09 18-48-47](/home/camper/Imágenes/Capturas de pantalla/Captura desde 2025-01-09 18-48-47.png)
+<a href="https://ibb.co/qRHX8BX"><img src="https://i.ibb.co/2jzmrqm/Captura-desde-2025-01-09-19-00-06.png" alt="Captura-desde-2025-01-09-19-00-06" border="0" /></a>
 
 ##### 2.
 
@@ -51,7 +51,7 @@ Luego cumple sus funciones en cada CRUD.
 
 Cerrar Sesion:
 
-![Captura desde 2025-01-09 18-50-42](/home/camper/Imágenes/Capturas de pantalla/Captura desde 2025-01-09 18-50-42.png)
+<a href="https://ibb.co/v1xFNqs"><img src="https://i.ibb.co/rkGjB0b/Captura-desde-2025-01-09-19-00-49.png" alt="Captura-desde-2025-01-09-19-00-49" border="0"></a>
 
 ### Link Sustentacion
 

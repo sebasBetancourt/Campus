@@ -20,7 +20,7 @@ En este programa se ingresa, dependiendo de quien ingrese, pude ser la coordinad
 La instalacion es sencilla, debes entrar a tu consola de Linux y clonar el repositorio para verlo funcionar, con:
 
 ```
-git clone https://github.com/sebasBetancourt/Campus.git
+git clone https://github.com/sebasBetancourt/proyecto_Python_BetancourtSebastian.git
 ```
 
 Aqui podras ejecutar el programa en un editor (VS), con el acrhivo main.py:
